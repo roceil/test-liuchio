@@ -1,0 +1,140 @@
+const animate = require('tailwindcss-animate')
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  darkMode: ['class'],
+  safelist: ['dark'],
+  prefix: '',
+
+  theme: {
+    container: {
+      center: true,
+      padding: '2rem',
+      screens: {
+        '2xl': '1400px',
+      },
+    },
+    extend: {
+      colors: {
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
+        },
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))',
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))',
+        },
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))',
+        },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))',
+        },
+        popover: {
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))',
+        },
+        card: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))',
+        },
+        // New color palette
+        neutral: {
+          900: '#111111',
+          800: '#222222',
+          700: '#333333',
+          600: '#444444',
+          500: '#555555',
+          400: '#666666',
+          300: '#777777',
+          200: '#888888',
+          100: '#999999',
+          50: '#EEEEEE',
+          0: '#FFFFFF',
+        },
+        primary: {
+          900: '#03045E',
+          800: '#023E8A',
+          700: '#0077B6',
+          600: '#0096C7',
+          500: '#00B4D8',
+          400: '#48CAE4',
+          300: '#90E0EF',
+          200: '#ADE8F4',
+          100: '#CAF0F8',
+          50: '#E5FAFF',
+        },
+        secondary: {
+          900: '#FF5400',
+          100: '#FFF3E5',
+        },
+        success: {
+          900: '#00A86B',
+          100: '#E5FFF6',
+        },
+        warning: {
+          900: '#FFC300',
+          100: '#FFF9E5',
+        },
+      },
+      borderRadius: {
+        xl: 'calc(var(--radius) + 4px)',
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
+      },
+      keyframes: {
+        'accordion-down': {
+          from: { height: 0 },
+          to: { height: 'var(--radix-accordion-content-height)' },
+        },
+        'accordion-up': {
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: 0 },
+        },
+        'collapsible-down': {
+          from: { height: 0 },
+          to: { height: 'var(--radix-collapsible-content-height)' },
+        },
+        'collapsible-up': {
+          from: { height: 'var(--radix-collapsible-content-height)' },
+          to: { height: 0 },
+        },
+      },
+      animation: {
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
+        'collapsible-down': 'collapsible-down 0.2s ease-in-out',
+        'collapsible-up': 'collapsible-up 0.2s ease-in-out',
+      },
+      // Typography settings
+      fontSize: {
+        'h1': ['48px', { lineHeight: '48px', letterSpacing: '8px' }],
+        'h2': ['30px', { lineHeight: '36px', letterSpacing: '8px' }],
+        'h3': ['24px', { lineHeight: '32px', letterSpacing: '8px' }],
+        'h4': ['20px', { lineHeight: '28px', letterSpacing: '8px' }],
+        'h5': ['18px', { lineHeight: '28px', letterSpacing: '8px' }],
+        'h6': ['16px', { lineHeight: '24px', letterSpacing: '8px' }],
+        'text-1': ['16px', { lineHeight: '24px', letterSpacing: '5px' }],
+        'text-2': ['14px', { lineHeight: '24px', letterSpacing: '5px' }],
+        'text-3': ['12px', { lineHeight: '20px', letterSpacing: '5px' }],
+      },
+      fontWeight: {
+        'regular': '400',
+        'bold': '700',
+      },
+    },
+  },
+  plugins: [animate],
+}

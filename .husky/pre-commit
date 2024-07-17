@@ -1,0 +1,54 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# 獲取當前分支名稱
+branch_name=$(git symbolic-ref --short HEAD)
+# 檢查是否在 main 分支
+if [ "$branch_name" = "main" ]; then
+  echo "您正在 main 分支上工作，請建立一個新的分支進行更改。"
+  exit 1
+fi
+
+# 執行 ESLint 檢查
+echo "正在執行 ESLint 檢查..."
+echo ""
+pnpm run lint
+
+if [ $? -ne 0 ]; then
+  echo "ESLint 檢查失敗，請修正錯誤後再提交！"
+  echo ""
+  exit 1
+fi
+
+echo "ESLint 檢查通過。"
+echo ""
+
+# 執行 TypeScript 類型檢查
+echo "正在進行 TypeScript 類型檢查..."
+echo ""
+pnpm run typecheck
+
+if [ $? -ne 0 ]; then
+  echo "TypeScript 類型檢查失敗，請修正錯誤後再提交！"
+  echo ""
+  exit 1
+fi
+
+echo "TypeScript 類型檢查通過。"
+echo ""
+
+# 可選：運行測試（如果您有設置測試腳本）
+# echo "正在運行測試..."
+# echo ""
+# pnpm run test
+
+# if [ $? -ne 0 ]; then
+#   echo "測試失敗，請修正錯誤後再提交！"
+#   echo ""
+#   exit 1
+# fi
+
+# echo "所有測試通過。"
+# echo ""
+
+echo "所有檢查都已通過。正在提交..."
